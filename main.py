@@ -69,6 +69,8 @@ elif w == '5':
             break
         else:
             print('Error! Value 1 must be smaller than Value 2 ')
+        
+    print(f"The selected interval: [{x1},{x2}]")
     
     f1 = f.subs(x,x1)
     f2 = f.subs(x,x2)
@@ -86,7 +88,35 @@ elif w == '6':
     print(f"The derivative of f(x)={sp.diff(f,x)}")
     while True:
         while True:
-            print('Pending!!! Under maintnance!!!')
-    
+            x1 = input('Enter value 1 of closed interval \n >>> ')
+            try:
+                x1 = float(x1)
+                break
+            except ValueError:
+                print('Error! value must be a number')    
+            
+        while True:
+            x2 = input('Enter value 2 of closed interval')
+            try:
+                x2 = float(x2)
+                break
+            except ValueError:
+                print('Error! Value must be a number')
+        if x1<=x2:
+            break
+        else:
+            print('Error! Value 1 must be equal or less than Value 2!! ')
+    print(f"The selected interval: [{x1},{x2}]")
+    print(f"The derivative of f: {sp.diff(f,x)}")
+    f1 = f.subs(x,x1)
+    f2 = f.subs(x,x2)
+
+    if f1 == f2:
+        print(f"Based on the Rolle Theorem, there exists at least one real root of f'(x) in ({x1},{x2})")
+    else:
+        print(f"The theorem does not apply!")
+
+
+
 else:
     print('Error!')
